@@ -1,9 +1,11 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import Footer from "../components/footer";
+import Header from "../components/header";
 
 const ContactPage = () => {
   return (
     <div>
+      <Header />
       <h1>Contact me</h1>
       <p>Tel.666501425</p>
       <a
@@ -12,7 +14,8 @@ const ContactPage = () => {
       >
         Linked in
       </a>
+      <Footer />
     </div>
-  )
-}
-export default ContactPage
+  );
+};
+export default ContactPage;

@@ -1,9 +1,12 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Link } from "gatsby";
+import Footer from "../components/footer";
+import Header from "../components/header";
 
 const AboutPage = () => {
   return (
     <div>
+      <Header />
       <h1>Some facts about me.</h1>
       <p>
         My biggest passion and point in my life is adventure. Pursuit for
@@ -18,7 +21,8 @@ const AboutPage = () => {
         commercial job, where I could develop my programming skills and have fun
         with amazing people!
       </p>
+      <Footer />
     </div>
-  )
-}
-export default AboutPage
+  );
+};
+export default AboutPage;
