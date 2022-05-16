@@ -3070,14 +3070,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/layout */ "./src/components/layout.js");
+/* harmony import */ var _public_page_data_sq_d_627796002_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../public/page-data/sq/d/627796002.json */ "./public/page-data/sq/d/627796002.json");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/layout */ "./src/components/layout.js");
+
 
 
 
 const BlogPage = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Blog"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Posts will show up here later on.")));
+  const data = _public_page_data_sq_d_627796002_json__WEBPACK_IMPORTED_MODULE_0__.data;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_layout__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h1", null, "Blog"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("ol", null, data.allMarkdownRemark.edges.map(edge => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, edge.node.frontmatter.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, edge.node.frontmatter.date));
+  }))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BlogPage);
@@ -4016,6 +4021,17 @@ module.exports = JSON.parse('{"data":{"site":{"siteMetadata":{"title":"Maksym Ka
 
 "use strict";
 module.exports = JSON.parse('{"data":{"site":{"siteMetadata":{"author":"Maksym Kaczorowski"}}}}');
+
+/***/ }),
+
+/***/ "./public/page-data/sq/d/627796002.json":
+/*!**********************************************!*\
+  !*** ./public/page-data/sq/d/627796002.json ***!
+  \**********************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"data":{"allMarkdownRemark":{"edges":[{"node":{"frontmatter":{"title":"Car sharing","date":"2022-01-18"}}},{"node":{"frontmatter":{"title":"Parking lot website","date":"2022-03-11"}}}]}}}');
 
 /***/ })
 
