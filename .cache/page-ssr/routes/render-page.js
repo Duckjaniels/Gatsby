@@ -26,7 +26,8 @@ exports.components = {
   "component---src-pages-about-js": () => __webpack_require__.e(/*! import() | component---src-pages-about-js */ "component---src-pages-about-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/about.js */ "./src/pages/about.js")),
   "component---src-pages-blog-js": () => __webpack_require__.e(/*! import() | component---src-pages-blog-js */ "component---src-pages-blog-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/blog.js */ "./src/pages/blog.js")),
   "component---src-pages-contact-js": () => __webpack_require__.e(/*! import() | component---src-pages-contact-js */ "component---src-pages-contact-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/contact.js */ "./src/pages/contact.js")),
-  "component---src-pages-index-js": () => __webpack_require__.e(/*! import() | component---src-pages-index-js */ "component---src-pages-index-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/index.js */ "./src/pages/index.js"))
+  "component---src-pages-index-js": () => __webpack_require__.e(/*! import() | component---src-pages-index-js */ "component---src-pages-index-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/index.js */ "./src/pages/index.js")),
+  "component---src-templates-blog-js": () => __webpack_require__.e(/*! import() | component---src-templates-blog-js */ "component---src-templates-blog-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/templates/blog.js */ "./src/templates/blog.js"))
 };
 
 /***/ }),
