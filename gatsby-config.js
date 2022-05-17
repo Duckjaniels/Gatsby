@@ -10,6 +10,13 @@ module.exports = {
     author: "Maksym Kaczorowski",
   },
   plugins: [
+    {
+      resolve: "gatsby-source-contentful",
+      option: {
+        spaceId: "process.env.CONTENTFUL_SPACE_ID",
+        accessToken: "process.env.CONTENTFUL_ACCESS_TOKEN",
+      },
+    },
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-source-filesystem",
