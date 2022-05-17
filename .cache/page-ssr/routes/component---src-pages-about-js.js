@@ -937,6 +937,23 @@ exports.shallowCompare = shallowCompare;
 
 /***/ }),
 
+/***/ "./src/components/footer.module.scss":
+/*!*******************************************!*\
+  !*** ./src/components/footer.module.scss ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "footer": () => (/* binding */ footer)
+/* harmony export */ });
+// Exports
+var footer = "footer-module--footer--Z1xkR";
+
+
+/***/ }),
+
 /***/ "./src/components/header.module.scss":
 /*!*******************************************!*\
   !*** ./src/components/header.module.scss ***!
@@ -2960,12 +2977,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _public_page_data_sq_d_440568431_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../public/page-data/sq/d/440568431.json */ "./public/page-data/sq/d/440568431.json");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _footer_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./footer.module.scss */ "./src/components/footer.module.scss");
+
 
 
 
 const Footer = () => {
   const data = _public_page_data_sq_d_440568431_json__WEBPACK_IMPORTED_MODULE_0__.data;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("footer", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "Created by ", data.site.siteMetadata.author, ", \xA92022"));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("footer", {
+    className: _footer_module_scss__WEBPACK_IMPORTED_MODULE_2__.footer
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "Created by ", data.site.siteMetadata.author, ", \xA92022"));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Footer);
