@@ -1,1 +1,1 @@
-{"componentChunkName":"component---src-templates-blog-js","path":"/blog/parkingLot","result":{"pageContext":{"slug":"parkingLot"}},"staticQueryHashes":["3159585216","440568431"]}
+{"componentChunkName":"component---src-templates-blog-js","path":"/blog/parkingLot","result":{"data":{"markdownRemark":{"frontmatter":{"title":"Parking lot website","date":"2022-03-11"},"html":"<p>CodersLab final project Parking lot website</p>\n<h2>Topics Covered</h2>\n<p>1.HTML 2.SCSS 3.React</p>"}},"pageContext":{"slug":"parkingLot"}},"staticQueryHashes":["3159585216","440568431"]}

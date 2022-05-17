@@ -1,1 +1,1 @@
-{"componentChunkName":"component---src-templates-blog-js","path":"/blog/carSharing","result":{"pageContext":{"slug":"carSharing"}},"staticQueryHashes":["3159585216","440568431"]}
+{"componentChunkName":"component---src-templates-blog-js","path":"/blog/carSharing","result":{"data":{"markdownRemark":{"frontmatter":{"title":"Car sharing","date":"2022-01-18"},"html":"<p>Car sharing CodersLab workshop</p>\n<h2>Topics Covered</h2>\n<p>1.HTML 2.SCSS 3.Mobile Responsive</p>"}},"pageContext":{"slug":"carSharing"}},"staticQueryHashes":["3159585216","440568431"]}
