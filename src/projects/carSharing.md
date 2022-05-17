@@ -4,6 +4,7 @@ date: "2022-01-18"
 ---
 
 Car sharing CodersLab workshop
+![carSharing](./carSharing.png)
 
 ## Topics Covered
 
