@@ -1007,10 +1007,12 @@ var content = "layout-module--content--FwTjf";
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "post": () => (/* binding */ post),
 /* harmony export */   "posts": () => (/* binding */ posts)
 /* harmony export */ });
 // Exports
 var posts = "blog-module--posts--p4vu7";
+var post = "blog-module--post--AganZ";
 
 
 /***/ }),
@@ -3125,7 +3127,9 @@ const BlogPage = () => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_layout__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h1", null, "Blog"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("ol", {
     className: _blog_module_scss__WEBPACK_IMPORTED_MODULE_4__.posts
   }, data.allMarkdownRemark.edges.map(edge => {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(gatsby__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("li", {
+      className: _blog_module_scss__WEBPACK_IMPORTED_MODULE_4__.post
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(gatsby__WEBPACK_IMPORTED_MODULE_3__.Link, {
       to: `/blog/${edge.node.fields.slug}`
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, edge.node.frontmatter.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, edge.node.frontmatter.date)));
   }))));

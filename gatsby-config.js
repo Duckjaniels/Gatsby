@@ -12,9 +12,9 @@ module.exports = {
   plugins: [
     {
       resolve: "gatsby-source-contentful",
-      option: {
-        spaceId: "process.env.CONTENTFUL_SPACE_ID",
-        accessToken: "process.env.CONTENTFUL_ACCESS_TOKEN",
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
     "gatsby-plugin-sass",
@@ -24,6 +24,10 @@ module.exports = {
         name: "src",
         path: `${__dirname}/src/`,
       },
+    },
+    "gatsby-plugin-image",
+    {
+      resolve: "gatsby-plugin-image",
     },
     "gatsby-plugin-sharp",
     {
