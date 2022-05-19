@@ -1,4 +1,8 @@
 var plugins = [{
+      name: 'gatsby-plugin-react-helmet',
+      plugin: require('/Users/Icebreaker/CodersLab/Projects/Gatsby/node_modules/gatsby-plugin-react-helmet/gatsby-ssr.js'),
+      options: {"plugins":[]},
+    },{
       name: 'gatsby-plugin-image',
       plugin: require('/Users/Icebreaker/CodersLab/Projects/Gatsby/node_modules/gatsby-plugin-image/gatsby-ssr.js'),
       options: {"plugins":[]},
