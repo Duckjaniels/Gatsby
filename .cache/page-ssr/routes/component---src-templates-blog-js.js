@@ -124,6 +124,498 @@ module.exports = _setPrototypeOf, module.exports.__esModule = true, module.expor
 
 /***/ }),
 
+/***/ "./node_modules/@contentful/rich-text-react-renderer/dist/rich-text-react-renderer.es5.js":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@contentful/rich-text-react-renderer/dist/rich-text-react-renderer.es5.js ***!
+  \************************************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var React = __webpack_require__(/*! react */ "react");
+var React__default = _interopDefault(React);
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function unwrapExports (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var blocks = createCommonjsModule(function (module, exports) {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BLOCKS = void 0;
+/**
+ * Map of all Contentful block types. Blocks contain inline or block nodes.
+ */
+var BLOCKS;
+(function (BLOCKS) {
+    BLOCKS["DOCUMENT"] = "document";
+    BLOCKS["PARAGRAPH"] = "paragraph";
+    BLOCKS["HEADING_1"] = "heading-1";
+    BLOCKS["HEADING_2"] = "heading-2";
+    BLOCKS["HEADING_3"] = "heading-3";
+    BLOCKS["HEADING_4"] = "heading-4";
+    BLOCKS["HEADING_5"] = "heading-5";
+    BLOCKS["HEADING_6"] = "heading-6";
+    BLOCKS["OL_LIST"] = "ordered-list";
+    BLOCKS["UL_LIST"] = "unordered-list";
+    BLOCKS["LIST_ITEM"] = "list-item";
+    BLOCKS["HR"] = "hr";
+    BLOCKS["QUOTE"] = "blockquote";
+    BLOCKS["EMBEDDED_ENTRY"] = "embedded-entry-block";
+    BLOCKS["EMBEDDED_ASSET"] = "embedded-asset-block";
+    BLOCKS["TABLE"] = "table";
+    BLOCKS["TABLE_ROW"] = "table-row";
+    BLOCKS["TABLE_CELL"] = "table-cell";
+    BLOCKS["TABLE_HEADER_CELL"] = "table-header-cell";
+})(BLOCKS = exports.BLOCKS || (exports.BLOCKS = {}));
+
+});
+
+unwrapExports(blocks);
+var blocks_1 = blocks.BLOCKS;
+
+var inlines = createCommonjsModule(function (module, exports) {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.INLINES = void 0;
+/**
+ * Map of all Contentful inline types. Inline contain inline or text nodes.
+ */
+var INLINES;
+(function (INLINES) {
+    INLINES["HYPERLINK"] = "hyperlink";
+    INLINES["ENTRY_HYPERLINK"] = "entry-hyperlink";
+    INLINES["ASSET_HYPERLINK"] = "asset-hyperlink";
+    INLINES["EMBEDDED_ENTRY"] = "embedded-entry-inline";
+})(INLINES = exports.INLINES || (exports.INLINES = {}));
+
+});
+
+unwrapExports(inlines);
+var inlines_1 = inlines.INLINES;
+
+var marks = createCommonjsModule(function (module, exports) {
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Map of all Contentful marks.
+ */
+var MARKS;
+(function (MARKS) {
+    MARKS["BOLD"] = "bold";
+    MARKS["ITALIC"] = "italic";
+    MARKS["UNDERLINE"] = "underline";
+    MARKS["CODE"] = "code";
+})(MARKS || (MARKS = {}));
+exports.default = MARKS;
+
+});
+
+unwrapExports(marks);
+
+var schemaConstraints = createCommonjsModule(function (module, exports) {
+var __spreadArray = (commonjsGlobal && commonjsGlobal.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+var _a;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.V1_NODE_TYPES = exports.TEXT_CONTAINERS = exports.HEADINGS = exports.CONTAINERS = exports.VOID_BLOCKS = exports.TABLE_BLOCKS = exports.LIST_ITEM_BLOCKS = exports.TOP_LEVEL_BLOCKS = void 0;
+
+
+/**
+ * Array of all top level block types.
+ * Only these block types can be the direct children of the document.
+ */
+exports.TOP_LEVEL_BLOCKS = [
+    blocks.BLOCKS.PARAGRAPH,
+    blocks.BLOCKS.HEADING_1,
+    blocks.BLOCKS.HEADING_2,
+    blocks.BLOCKS.HEADING_3,
+    blocks.BLOCKS.HEADING_4,
+    blocks.BLOCKS.HEADING_5,
+    blocks.BLOCKS.HEADING_6,
+    blocks.BLOCKS.OL_LIST,
+    blocks.BLOCKS.UL_LIST,
+    blocks.BLOCKS.HR,
+    blocks.BLOCKS.QUOTE,
+    blocks.BLOCKS.EMBEDDED_ENTRY,
+    blocks.BLOCKS.EMBEDDED_ASSET,
+    blocks.BLOCKS.TABLE,
+];
+/**
+ * Array of all allowed block types inside list items
+ */
+exports.LIST_ITEM_BLOCKS = [
+    blocks.BLOCKS.PARAGRAPH,
+    blocks.BLOCKS.HEADING_1,
+    blocks.BLOCKS.HEADING_2,
+    blocks.BLOCKS.HEADING_3,
+    blocks.BLOCKS.HEADING_4,
+    blocks.BLOCKS.HEADING_5,
+    blocks.BLOCKS.HEADING_6,
+    blocks.BLOCKS.OL_LIST,
+    blocks.BLOCKS.UL_LIST,
+    blocks.BLOCKS.HR,
+    blocks.BLOCKS.QUOTE,
+    blocks.BLOCKS.EMBEDDED_ENTRY,
+    blocks.BLOCKS.EMBEDDED_ASSET,
+];
+exports.TABLE_BLOCKS = [
+    blocks.BLOCKS.TABLE,
+    blocks.BLOCKS.TABLE_ROW,
+    blocks.BLOCKS.TABLE_CELL,
+    blocks.BLOCKS.TABLE_HEADER_CELL,
+];
+/**
+ * Array of all void block types
+ */
+exports.VOID_BLOCKS = [blocks.BLOCKS.HR, blocks.BLOCKS.EMBEDDED_ENTRY, blocks.BLOCKS.EMBEDDED_ASSET];
+/**
+ * Dictionary of all container block types, and the set block types they accept as children.
+ *
+ * Note: This does not include `[BLOCKS.DOCUMENT]: TOP_LEVEL_BLOCKS`
+ */
+exports.CONTAINERS = (_a = {},
+    _a[blocks.BLOCKS.OL_LIST] = [blocks.BLOCKS.LIST_ITEM],
+    _a[blocks.BLOCKS.UL_LIST] = [blocks.BLOCKS.LIST_ITEM],
+    _a[blocks.BLOCKS.LIST_ITEM] = exports.LIST_ITEM_BLOCKS,
+    _a[blocks.BLOCKS.QUOTE] = [blocks.BLOCKS.PARAGRAPH],
+    _a[blocks.BLOCKS.TABLE] = [blocks.BLOCKS.TABLE_ROW],
+    _a[blocks.BLOCKS.TABLE_ROW] = [blocks.BLOCKS.TABLE_CELL, blocks.BLOCKS.TABLE_HEADER_CELL],
+    _a[blocks.BLOCKS.TABLE_CELL] = [blocks.BLOCKS.PARAGRAPH],
+    _a[blocks.BLOCKS.TABLE_HEADER_CELL] = [blocks.BLOCKS.PARAGRAPH],
+    _a);
+/**
+ * Array of all heading levels
+ */
+exports.HEADINGS = [
+    blocks.BLOCKS.HEADING_1,
+    blocks.BLOCKS.HEADING_2,
+    blocks.BLOCKS.HEADING_3,
+    blocks.BLOCKS.HEADING_4,
+    blocks.BLOCKS.HEADING_5,
+    blocks.BLOCKS.HEADING_6,
+];
+/**
+ * Array of all block types that may contain text and inline nodes.
+ */
+exports.TEXT_CONTAINERS = __spreadArray([blocks.BLOCKS.PARAGRAPH], exports.HEADINGS, true);
+/**
+ * Node types before `tables` release.
+ */
+exports.V1_NODE_TYPES = [
+    blocks.BLOCKS.DOCUMENT,
+    blocks.BLOCKS.PARAGRAPH,
+    blocks.BLOCKS.HEADING_1,
+    blocks.BLOCKS.HEADING_2,
+    blocks.BLOCKS.HEADING_3,
+    blocks.BLOCKS.HEADING_4,
+    blocks.BLOCKS.HEADING_5,
+    blocks.BLOCKS.HEADING_6,
+    blocks.BLOCKS.OL_LIST,
+    blocks.BLOCKS.UL_LIST,
+    blocks.BLOCKS.LIST_ITEM,
+    blocks.BLOCKS.HR,
+    blocks.BLOCKS.QUOTE,
+    blocks.BLOCKS.EMBEDDED_ENTRY,
+    blocks.BLOCKS.EMBEDDED_ASSET,
+    inlines.INLINES.HYPERLINK,
+    inlines.INLINES.ENTRY_HYPERLINK,
+    inlines.INLINES.ASSET_HYPERLINK,
+    inlines.INLINES.EMBEDDED_ENTRY,
+    'text',
+];
+
+});
+
+unwrapExports(schemaConstraints);
+var schemaConstraints_1 = schemaConstraints.V1_NODE_TYPES;
+var schemaConstraints_2 = schemaConstraints.TEXT_CONTAINERS;
+var schemaConstraints_3 = schemaConstraints.HEADINGS;
+var schemaConstraints_4 = schemaConstraints.CONTAINERS;
+var schemaConstraints_5 = schemaConstraints.VOID_BLOCKS;
+var schemaConstraints_6 = schemaConstraints.TABLE_BLOCKS;
+var schemaConstraints_7 = schemaConstraints.LIST_ITEM_BLOCKS;
+var schemaConstraints_8 = schemaConstraints.TOP_LEVEL_BLOCKS;
+
+var types = createCommonjsModule(function (module, exports) {
+Object.defineProperty(exports, "__esModule", { value: true });
+
+});
+
+unwrapExports(types);
+
+var nodeTypes = createCommonjsModule(function (module, exports) {
+Object.defineProperty(exports, "__esModule", { value: true });
+
+});
+
+unwrapExports(nodeTypes);
+
+var emptyDocument = createCommonjsModule(function (module, exports) {
+Object.defineProperty(exports, "__esModule", { value: true });
+
+/**
+ * A rich text document considered to be empty.
+ * Any other document structure than this is not considered empty.
+ */
+var EMPTY_DOCUMENT = {
+    nodeType: blocks.BLOCKS.DOCUMENT,
+    data: {},
+    content: [
+        {
+            nodeType: blocks.BLOCKS.PARAGRAPH,
+            data: {},
+            content: [
+                {
+                    nodeType: 'text',
+                    value: '',
+                    marks: [],
+                    data: {},
+                },
+            ],
+        },
+    ],
+};
+exports.default = EMPTY_DOCUMENT;
+
+});
+
+unwrapExports(emptyDocument);
+
+var helpers = createCommonjsModule(function (module, exports) {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isText = exports.isBlock = exports.isInline = void 0;
+
+
+/**
+ * Tiny replacement for Object.values(object).includes(key) to
+ * avoid including CoreJS polyfills
+ */
+function hasValue(obj, value) {
+    for (var _i = 0, _a = Object.keys(obj); _i < _a.length; _i++) {
+        var key = _a[_i];
+        if (value === obj[key]) {
+            return true;
+        }
+    }
+    return false;
+}
+/**
+ * Checks if the node is an instance of Inline.
+ */
+function isInline(node) {
+    return hasValue(inlines.INLINES, node.nodeType);
+}
+exports.isInline = isInline;
+/**
+ * Checks if the node is an instance of Block.
+ */
+function isBlock(node) {
+    return hasValue(blocks.BLOCKS, node.nodeType);
+}
+exports.isBlock = isBlock;
+/**
+ * Checks if the node is an instance of Text.
+ */
+function isText(node) {
+    return node.nodeType === 'text';
+}
+exports.isText = isText;
+
+});
+
+unwrapExports(helpers);
+var helpers_1 = helpers.isText;
+var helpers_2 = helpers.isBlock;
+var helpers_3 = helpers.isInline;
+
+var dist = createCommonjsModule(function (module, exports) {
+var __createBinding = (commonjsGlobal && commonjsGlobal.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (commonjsGlobal && commonjsGlobal.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __exportStar = (commonjsGlobal && commonjsGlobal.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+var __importStar = (commonjsGlobal && commonjsGlobal.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.helpers = exports.EMPTY_DOCUMENT = exports.MARKS = exports.INLINES = exports.BLOCKS = void 0;
+
+Object.defineProperty(exports, "BLOCKS", { enumerable: true, get: function () { return blocks.BLOCKS; } });
+
+Object.defineProperty(exports, "INLINES", { enumerable: true, get: function () { return inlines.INLINES; } });
+
+Object.defineProperty(exports, "MARKS", { enumerable: true, get: function () { return __importDefault(marks).default; } });
+__exportStar(schemaConstraints, exports);
+__exportStar(types, exports);
+__exportStar(nodeTypes, exports);
+
+Object.defineProperty(exports, "EMPTY_DOCUMENT", { enumerable: true, get: function () { return __importDefault(emptyDocument).default; } });
+var helpers$1 = __importStar(helpers);
+exports.helpers = helpers$1;
+
+});
+
+unwrapExports(dist);
+var dist_1 = dist.helpers;
+var dist_2 = dist.EMPTY_DOCUMENT;
+var dist_3 = dist.MARKS;
+var dist_4 = dist.INLINES;
+var dist_5 = dist.BLOCKS;
+
+function appendKeyToValidElement(element, key) {
+    if (React.isValidElement(element) && element.key === null) {
+        return React.cloneElement(element, { key: key });
+    }
+    return element;
+}
+
+function nodeListToReactComponents(nodes, options) {
+    return nodes.map(function (node, index) {
+        return appendKeyToValidElement(nodeToReactComponent(node, options), index);
+    });
+}
+function nodeToReactComponent(node, options) {
+    var renderNode = options.renderNode, renderMark = options.renderMark, renderText = options.renderText;
+    if (dist_1.isText(node)) {
+        return node.marks.reduce(function (value, mark) {
+            if (!renderMark[mark.type]) {
+                return value;
+            }
+            return renderMark[mark.type](value);
+        }, renderText ? renderText(node.value) : node.value);
+    }
+    else {
+        var children = nodeListToReactComponents(node.content, options);
+        if (!node.nodeType || !renderNode[node.nodeType]) {
+            return React__default.createElement(React__default.Fragment, null, children);
+        }
+        return renderNode[node.nodeType](node, children);
+    }
+}
+
+var _a, _b;
+var defaultNodeRenderers = (_a = {},
+    _a[dist_5.DOCUMENT] = function (node, children) { return children; },
+    _a[dist_5.PARAGRAPH] = function (node, children) { return React__default.createElement("p", null, children); },
+    _a[dist_5.HEADING_1] = function (node, children) { return React__default.createElement("h1", null, children); },
+    _a[dist_5.HEADING_2] = function (node, children) { return React__default.createElement("h2", null, children); },
+    _a[dist_5.HEADING_3] = function (node, children) { return React__default.createElement("h3", null, children); },
+    _a[dist_5.HEADING_4] = function (node, children) { return React__default.createElement("h4", null, children); },
+    _a[dist_5.HEADING_5] = function (node, children) { return React__default.createElement("h5", null, children); },
+    _a[dist_5.HEADING_6] = function (node, children) { return React__default.createElement("h6", null, children); },
+    _a[dist_5.EMBEDDED_ENTRY] = function (node, children) { return React__default.createElement("div", null, children); },
+    _a[dist_5.UL_LIST] = function (node, children) { return React__default.createElement("ul", null, children); },
+    _a[dist_5.OL_LIST] = function (node, children) { return React__default.createElement("ol", null, children); },
+    _a[dist_5.LIST_ITEM] = function (node, children) { return React__default.createElement("li", null, children); },
+    _a[dist_5.QUOTE] = function (node, children) { return React__default.createElement("blockquote", null, children); },
+    _a[dist_5.HR] = function () { return React__default.createElement("hr", null); },
+    _a[dist_5.TABLE] = function (node, children) { return (React__default.createElement("table", null,
+        React__default.createElement("tbody", null, children))); },
+    _a[dist_5.TABLE_ROW] = function (node, children) { return React__default.createElement("tr", null, children); },
+    _a[dist_5.TABLE_HEADER_CELL] = function (node, children) { return React__default.createElement("th", null, children); },
+    _a[dist_5.TABLE_CELL] = function (node, children) { return React__default.createElement("td", null, children); },
+    _a[dist_4.ASSET_HYPERLINK] = function (node) { return defaultInline(dist_4.ASSET_HYPERLINK, node); },
+    _a[dist_4.ENTRY_HYPERLINK] = function (node) { return defaultInline(dist_4.ENTRY_HYPERLINK, node); },
+    _a[dist_4.EMBEDDED_ENTRY] = function (node) { return defaultInline(dist_4.EMBEDDED_ENTRY, node); },
+    _a[dist_4.HYPERLINK] = function (node, children) { return React__default.createElement("a", { href: node.data.uri }, children); },
+    _a);
+var defaultMarkRenderers = (_b = {},
+    _b[dist_3.BOLD] = function (text) { return React__default.createElement("b", null, text); },
+    _b[dist_3.ITALIC] = function (text) { return React__default.createElement("i", null, text); },
+    _b[dist_3.UNDERLINE] = function (text) { return React__default.createElement("u", null, text); },
+    _b[dist_3.CODE] = function (text) { return React__default.createElement("code", null, text); },
+    _b);
+function defaultInline(type, node) {
+    return (React__default.createElement("span", { key: node.data.target.sys.id },
+        "type: ",
+        node.nodeType,
+        " id: ",
+        node.data.target.sys.id));
+}
+/**
+ * Serialize a Contentful Rich Text `document` to React tree
+ */
+function documentToReactComponents(richTextDocument, options) {
+    if (options === void 0) { options = {}; }
+    if (!richTextDocument) {
+        return null;
+    }
+    return nodeToReactComponent(richTextDocument, {
+        renderNode: __assign(__assign({}, defaultNodeRenderers), options.renderNode),
+        renderMark: __assign(__assign({}, defaultMarkRenderers), options.renderMark),
+        renderText: options.renderText,
+    });
+}
+
+exports.documentToReactComponents = documentToReactComponents;
+//# sourceMappingURL=rich-text-react-renderer.es5.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/@gatsbyjs/reach-router/es/lib/history.js":
 /*!***************************************************************!*\
   !*** ./node_modules/@gatsbyjs/reach-router/es/lib/history.js ***!
@@ -937,6 +1429,260 @@ exports.shallowCompare = shallowCompare;
 
 /***/ }),
 
+/***/ "./node_modules/camelcase/index.js":
+/*!*****************************************!*\
+  !*** ./node_modules/camelcase/index.js ***!
+  \*****************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+const preserveCamelCase = string => {
+	let isLastCharLower = false;
+	let isLastCharUpper = false;
+	let isLastLastCharUpper = false;
+
+	for (let i = 0; i < string.length; i++) {
+		const character = string[i];
+
+		if (isLastCharLower && /[a-zA-Z]/.test(character) && character.toUpperCase() === character) {
+			string = string.slice(0, i) + '-' + string.slice(i);
+			isLastCharLower = false;
+			isLastLastCharUpper = isLastCharUpper;
+			isLastCharUpper = true;
+			i++;
+		} else if (isLastCharUpper && isLastLastCharUpper && /[a-zA-Z]/.test(character) && character.toLowerCase() === character) {
+			string = string.slice(0, i - 1) + '-' + string.slice(i - 1);
+			isLastLastCharUpper = isLastCharUpper;
+			isLastCharUpper = false;
+			isLastCharLower = true;
+		} else {
+			isLastCharLower = character.toLowerCase() === character && character.toUpperCase() !== character;
+			isLastLastCharUpper = isLastCharUpper;
+			isLastCharUpper = character.toUpperCase() === character && character.toLowerCase() !== character;
+		}
+	}
+
+	return string;
+};
+
+const camelCase = (input, options) => {
+	if (!(typeof input === 'string' || Array.isArray(input))) {
+		throw new TypeError('Expected the input to be `string | string[]`');
+	}
+
+	options = Object.assign({
+		pascalCase: false
+	}, options);
+
+	const postProcess = x => options.pascalCase ? x.charAt(0).toUpperCase() + x.slice(1) : x;
+
+	if (Array.isArray(input)) {
+		input = input.map(x => x.trim())
+			.filter(x => x.length)
+			.join('-');
+	} else {
+		input = input.trim();
+	}
+
+	if (input.length === 0) {
+		return '';
+	}
+
+	if (input.length === 1) {
+		return options.pascalCase ? input.toUpperCase() : input.toLowerCase();
+	}
+
+	const hasUpperCase = input !== input.toLowerCase();
+
+	if (hasUpperCase) {
+		input = preserveCamelCase(input);
+	}
+
+	input = input
+		.replace(/^[_.\- ]+/, '')
+		.toLowerCase()
+		.replace(/[_.\- ]+(\w|$)/g, (_, p1) => p1.toUpperCase())
+		.replace(/\d+(\w|$)/g, m => m.toUpperCase());
+
+	return postProcess(input);
+};
+
+module.exports = camelCase;
+// TODO: Remove this for the next major release
+module.exports["default"] = camelCase;
+
+
+/***/ }),
+
+/***/ "./node_modules/contentful-resolve-response/dist/esm/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/contentful-resolve-response/dist/esm/index.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var fast_copy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! fast-copy */ "./node_modules/fast-copy/dist/fast-copy.esm.js");
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+
+
+var UNRESOLVED_LINK = {}; // unique object to avoid polyfill bloat using Symbol()
+
+/**
+ * isLink Function
+ * Checks if the object has sys.type "Link"
+ * @param object
+ */
+var isLink = function isLink(object) {
+  return object && object.sys && object.sys.type === 'Link';
+};
+
+/**
+ * Creates a string key for lookup in entityMap
+ *
+ * @param {*} sys
+ * @param {String} sys.type
+ * @param {String} sys.id
+ * @return {String}
+ */
+var makeLookupKey = function makeLookupKey(sys) {
+  return sys.type + '!' + sys.id;
+};
+
+/**
+ * getLink Function
+ *
+ * @param response
+ * @param link
+ * @return {undefined}
+ */
+var getLink = function getLink(entityMap, link) {
+  var _link$sys = link.sys,
+      type = _link$sys.linkType,
+      id = _link$sys.id;
+
+  var lookupKey = makeLookupKey({ type: type, id: id });
+
+  return entityMap.get(lookupKey) || UNRESOLVED_LINK;
+};
+
+/**
+ * cleanUpLinks Function
+ * - Removes unresolvable links from Arrays and Objects
+ *
+ * @param {Object[]|Object} input
+ */
+var cleanUpLinks = function cleanUpLinks(input) {
+  if (Array.isArray(input)) {
+    return input.filter(function (val) {
+      return val !== UNRESOLVED_LINK;
+    });
+  }
+  for (var key in input) {
+    if (input[key] === UNRESOLVED_LINK) {
+      delete input[key];
+    }
+  }
+  return input;
+};
+
+/**
+ * walkMutate Function
+ * @param input
+ * @param predicate
+ * @param mutator
+ * @return {*}
+ */
+var walkMutate = function walkMutate(input, predicate, mutator, removeUnresolved) {
+  if (predicate(input)) {
+    return mutator(input);
+  }
+
+  if (input && (typeof input === 'undefined' ? 'undefined' : _typeof(input)) === 'object') {
+    for (var key in input) {
+      // eslint-disable-next-line no-prototype-builtins
+      if (input.hasOwnProperty(key)) {
+        input[key] = walkMutate(input[key], predicate, mutator, removeUnresolved);
+      }
+    }
+    if (removeUnresolved) {
+      input = cleanUpLinks(input);
+    }
+  }
+  return input;
+};
+
+var normalizeLink = function normalizeLink(entityMap, link, removeUnresolved) {
+  var resolvedLink = getLink(entityMap, link);
+  if (resolvedLink === UNRESOLVED_LINK) {
+    return removeUnresolved ? resolvedLink : link;
+  }
+  return resolvedLink;
+};
+
+var makeEntryObject = function makeEntryObject(item, itemEntryPoints) {
+  if (!Array.isArray(itemEntryPoints)) {
+    return item;
+  }
+
+  var entryPoints = Object.keys(item).filter(function (ownKey) {
+    return itemEntryPoints.indexOf(ownKey) !== -1;
+  });
+
+  return entryPoints.reduce(function (entryObj, entryPoint) {
+    entryObj[entryPoint] = item[entryPoint];
+    return entryObj;
+  }, {});
+};
+
+/**
+ * resolveResponse Function
+ * Resolves contentful response to normalized form.
+ * @param {Object} response Contentful response
+ * @param {{removeUnresolved: Boolean, itemEntryPoints: Array<String>}|{}} options
+ * @param {Boolean} options.removeUnresolved - Remove unresolved links default:false
+ * @param {Array<String>} options.itemEntryPoints - Resolve links only in those item properties
+ * @return {Object}
+ */
+var resolveResponse = function resolveResponse(response, options) {
+  options = options || {};
+  if (!response.items) {
+    return [];
+  }
+  var responseClone = (0,fast_copy__WEBPACK_IMPORTED_MODULE_0__["default"])(response);
+  var allIncludes = Object.keys(responseClone.includes || {}).reduce(function (all, type) {
+    return [].concat(_toConsumableArray(all), _toConsumableArray(response.includes[type]));
+  }, []);
+
+  var allEntries = [].concat(_toConsumableArray(responseClone.items), _toConsumableArray(allIncludes));
+
+  var entityMap = new Map(allEntries.map(function (entity) {
+    return [makeLookupKey(entity.sys), entity];
+  }));
+
+  allEntries.forEach(function (item) {
+    var entryObject = makeEntryObject(item, options.itemEntryPoints);
+
+    Object.assign(item, walkMutate(entryObject, isLink, function (link) {
+      return normalizeLink(entityMap, link, options.removeUnresolved);
+    }, options.removeUnresolved));
+  });
+
+  return responseClone.items;
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (resolveResponse);
+
+/***/ }),
+
 /***/ "./src/components/footer.module.scss":
 /*!*******************************************!*\
   !*** ./src/components/footer.module.scss ***!
@@ -994,6 +1740,368 @@ __webpack_require__.r(__webpack_exports__);
 // Exports
 var container = "layout-module--container--RoCXy";
 var content = "layout-module--content--FwTjf";
+
+
+/***/ }),
+
+/***/ "./node_modules/fast-copy/dist/fast-copy.esm.js":
+/*!******************************************************!*\
+  !*** ./node_modules/fast-copy/dist/fast-copy.esm.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ copy)
+/* harmony export */ });
+var toStringFunction = Function.prototype.toString;
+var create = Object.create, defineProperty = Object.defineProperty, getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor, getOwnPropertyNames = Object.getOwnPropertyNames, getOwnPropertySymbols = Object.getOwnPropertySymbols, getPrototypeOf$1 = Object.getPrototypeOf;
+var _a = Object.prototype, hasOwnProperty = _a.hasOwnProperty, propertyIsEnumerable = _a.propertyIsEnumerable;
+var SYMBOL_PROPERTIES = typeof getOwnPropertySymbols === 'function';
+var WEAK_MAP = typeof WeakMap === 'function';
+/**
+ * @function createCache
+ *
+ * @description
+ * get a new cache object to prevent circular references
+ *
+ * @returns the new cache object
+ */
+var createCache = (function () {
+    if (WEAK_MAP) {
+        return function () { return new WeakMap(); };
+    }
+    var Cache = /** @class */ (function () {
+        function Cache() {
+            this._keys = [];
+            this._values = [];
+        }
+        Cache.prototype.has = function (key) {
+            return !!~this._keys.indexOf(key);
+        };
+        Cache.prototype.get = function (key) {
+            return this._values[this._keys.indexOf(key)];
+        };
+        Cache.prototype.set = function (key, value) {
+            this._keys.push(key);
+            this._values.push(value);
+        };
+        return Cache;
+    }());
+    return function () { return new Cache(); };
+})();
+/**
+ * @function getCleanClone
+ *
+ * @description
+ * get an empty version of the object with the same prototype it has
+ *
+ * @param object the object to build a clean clone from
+ * @param realm the realm the object resides in
+ * @returns the empty cloned object
+ */
+var getCleanClone = function (object, realm) {
+    var prototype = object.__proto__ || getPrototypeOf$1(object);
+    if (!prototype) {
+        return create(null);
+    }
+    var Constructor = prototype.constructor;
+    if (Constructor === realm.Object) {
+        return prototype === realm.Object.prototype ? {} : create(prototype);
+    }
+    if (~toStringFunction.call(Constructor).indexOf('[native code]')) {
+        try {
+            return new Constructor();
+        }
+        catch (_a) { }
+    }
+    return create(prototype);
+};
+/**
+ * @function getObjectCloneLoose
+ *
+ * @description
+ * get a copy of the object based on loose rules, meaning all enumerable keys
+ * and symbols are copied, but property descriptors are not considered
+ *
+ * @param object the object to clone
+ * @param realm the realm the object resides in
+ * @param handleCopy the function that handles copying the object
+ * @returns the copied object
+ */
+var getObjectCloneLoose = function (object, realm, handleCopy, cache) {
+    var clone = getCleanClone(object, realm);
+    // set in the cache immediately to be able to reuse the object recursively
+    cache.set(object, clone);
+    for (var key in object) {
+        if (hasOwnProperty.call(object, key)) {
+            clone[key] = handleCopy(object[key], cache);
+        }
+    }
+    if (SYMBOL_PROPERTIES) {
+        var symbols = getOwnPropertySymbols(object);
+        for (var index = 0, length_1 = symbols.length, symbol = void 0; index < length_1; ++index) {
+            symbol = symbols[index];
+            if (propertyIsEnumerable.call(object, symbol)) {
+                clone[symbol] = handleCopy(object[symbol], cache);
+            }
+        }
+    }
+    return clone;
+};
+/**
+ * @function getObjectCloneStrict
+ *
+ * @description
+ * get a copy of the object based on strict rules, meaning all keys and symbols
+ * are copied based on the original property descriptors
+ *
+ * @param object the object to clone
+ * @param realm the realm the object resides in
+ * @param handleCopy the function that handles copying the object
+ * @returns the copied object
+ */
+var getObjectCloneStrict = function (object, realm, handleCopy, cache) {
+    var clone = getCleanClone(object, realm);
+    // set in the cache immediately to be able to reuse the object recursively
+    cache.set(object, clone);
+    var properties = SYMBOL_PROPERTIES
+        ? getOwnPropertyNames(object).concat(getOwnPropertySymbols(object))
+        : getOwnPropertyNames(object);
+    for (var index = 0, length_2 = properties.length, property = void 0, descriptor = void 0; index < length_2; ++index) {
+        property = properties[index];
+        if (property !== 'callee' && property !== 'caller') {
+            descriptor = getOwnPropertyDescriptor(object, property);
+            if (descriptor) {
+                // Only clone the value if actually a value, not a getter / setter.
+                if (!descriptor.get && !descriptor.set) {
+                    descriptor.value = handleCopy(object[property], cache);
+                }
+                try {
+                    defineProperty(clone, property, descriptor);
+                }
+                catch (error) {
+                    // Tee above can fail on node in edge cases, so fall back to the loose assignment.
+                    clone[property] = descriptor.value;
+                }
+            }
+            else {
+                // In extra edge cases where the property descriptor cannot be retrived, fall back to
+                // the loose assignment.
+                clone[property] = handleCopy(object[property], cache);
+            }
+        }
+    }
+    return clone;
+};
+/**
+ * @function getRegExpFlags
+ *
+ * @description
+ * get the flags to apply to the copied regexp
+ *
+ * @param regExp the regexp to get the flags of
+ * @returns the flags for the regexp
+ */
+var getRegExpFlags = function (regExp) {
+    var flags = '';
+    if (regExp.global) {
+        flags += 'g';
+    }
+    if (regExp.ignoreCase) {
+        flags += 'i';
+    }
+    if (regExp.multiline) {
+        flags += 'm';
+    }
+    if (regExp.unicode) {
+        flags += 'u';
+    }
+    if (regExp.sticky) {
+        flags += 'y';
+    }
+    return flags;
+};
+
+// utils
+var isArray = Array.isArray;
+var getPrototypeOf = Object.getPrototypeOf;
+var GLOBAL_THIS = (function () {
+    if (typeof globalThis !== 'undefined') {
+        return globalThis;
+    }
+    if (typeof self !== 'undefined') {
+        return self;
+    }
+    if (typeof window !== 'undefined') {
+        return window;
+    }
+    if (typeof global !== 'undefined') {
+        return global;
+    }
+    if (console && console.error) {
+        console.error('Unable to locate global object, returning "this".');
+    }
+    return this;
+})();
+/**
+ * @function copy
+ *
+ * @description
+ * copy an value deeply as much as possible
+ *
+ * If `strict` is applied, then all properties (including non-enumerable ones)
+ * are copied with their original property descriptors on both objects and arrays.
+ *
+ * The value is compared to the global constructors in the `realm` provided,
+ * and the native constructor is always used to ensure that extensions of native
+ * objects (allows in ES2015+) are maintained.
+ *
+ * @param value the value to copy
+ * @param [options] the options for copying with
+ * @param [options.isStrict] should the copy be strict
+ * @param [options.realm] the realm (this) value the value is copied from
+ * @returns the copied value
+ */
+function copy(value, options) {
+    // manually coalesced instead of default parameters for performance
+    var isStrict = !!(options && options.isStrict);
+    var realm = (options && options.realm) || GLOBAL_THIS;
+    var getObjectClone = isStrict ? getObjectCloneStrict : getObjectCloneLoose;
+    /**
+     * @function handleCopy
+     *
+     * @description
+     * copy the value recursively based on its type
+     *
+     * @param value the value to copy
+     * @returns the copied value
+     */
+    var handleCopy = function (value, cache) {
+        if (!value || typeof value !== 'object') {
+            return value;
+        }
+        if (cache.has(value)) {
+            return cache.get(value);
+        }
+        var prototype = value.__proto__ || getPrototypeOf(value);
+        var Constructor = prototype && prototype.constructor;
+        // plain objects
+        if (!Constructor || Constructor === realm.Object) {
+            return getObjectClone(value, realm, handleCopy, cache);
+        }
+        var clone;
+        // arrays
+        if (isArray(value)) {
+            // if strict, include non-standard properties
+            if (isStrict) {
+                return getObjectCloneStrict(value, realm, handleCopy, cache);
+            }
+            clone = new Constructor();
+            cache.set(value, clone);
+            for (var index = 0, length_1 = value.length; index < length_1; ++index) {
+                clone[index] = handleCopy(value[index], cache);
+            }
+            return clone;
+        }
+        // dates
+        if (value instanceof realm.Date) {
+            return new Constructor(value.getTime());
+        }
+        // regexps
+        if (value instanceof realm.RegExp) {
+            clone = new Constructor(value.source, value.flags || getRegExpFlags(value));
+            clone.lastIndex = value.lastIndex;
+            return clone;
+        }
+        // maps
+        if (realm.Map && value instanceof realm.Map) {
+            clone = new Constructor();
+            cache.set(value, clone);
+            value.forEach(function (value, key) {
+                clone.set(key, handleCopy(value, cache));
+            });
+            return clone;
+        }
+        // sets
+        if (realm.Set && value instanceof realm.Set) {
+            clone = new Constructor();
+            cache.set(value, clone);
+            value.forEach(function (value) {
+                clone.add(handleCopy(value, cache));
+            });
+            return clone;
+        }
+        // blobs
+        if (realm.Blob && value instanceof realm.Blob) {
+            return value.slice(0, value.size, value.type);
+        }
+        // buffers (node-only)
+        if (realm.Buffer && realm.Buffer.isBuffer(value)) {
+            clone = realm.Buffer.allocUnsafe
+                ? realm.Buffer.allocUnsafe(value.length)
+                : new Constructor(value.length);
+            cache.set(value, clone);
+            value.copy(clone);
+            return clone;
+        }
+        // arraybuffers / dataviews
+        if (realm.ArrayBuffer) {
+            // dataviews
+            if (realm.ArrayBuffer.isView(value)) {
+                clone = new Constructor(value.buffer.slice(0));
+                cache.set(value, clone);
+                return clone;
+            }
+            // arraybuffers
+            if (value instanceof realm.ArrayBuffer) {
+                clone = value.slice(0);
+                cache.set(value, clone);
+                return clone;
+            }
+        }
+        // if the value cannot / should not be cloned, don't
+        if (
+        // promise-like
+        typeof value.then === 'function' ||
+            // errors
+            value instanceof Error ||
+            // weakmaps
+            (realm.WeakMap && value instanceof realm.WeakMap) ||
+            // weaksets
+            (realm.WeakSet && value instanceof realm.WeakSet)) {
+            return value;
+        }
+        // assume anything left is a custom constructor
+        return getObjectClone(value, realm, handleCopy, cache);
+    };
+    return handleCopy(value, createCache());
+}
+// Adding reference to allow usage in CommonJS libraries compiled using TSC, which
+// expects there to be a default property on the exported value. See
+// [#37](https://github.com/planttheidea/fast-copy/issues/37) for details.
+copy.default = copy;
+/**
+ * @function strictCopy
+ *
+ * @description
+ * copy the value with `strict` option pre-applied
+ *
+ * @param value the value to copy
+ * @param [options] the options for copying with
+ * @param [options.realm] the realm (this) value the value is copied from
+ * @returns the copied value
+ */
+copy.strict = function strictCopy(value, options) {
+    return copy(value, {
+        isStrict: true,
+        realm: options ? options.realm : void 0,
+    });
+};
+
+
+//# sourceMappingURL=fast-copy.esm.js.map
 
 
 /***/ }),
@@ -2963,6 +4071,816 @@ function stripPrefix(str, prefix = ``) {
 
 /***/ }),
 
+/***/ "./node_modules/gatsby-plugin-image/dist/gatsby-image.module.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/gatsby-plugin-image/dist/gatsby-image.module.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "GatsbyImage": () => (/* binding */ B),
+/* harmony export */   "MainImage": () => (/* binding */ z),
+/* harmony export */   "Placeholder": () => (/* binding */ O),
+/* harmony export */   "StaticImage": () => (/* binding */ V),
+/* harmony export */   "generateImageData": () => (/* binding */ f),
+/* harmony export */   "getImage": () => (/* binding */ M),
+/* harmony export */   "getImageData": () => (/* binding */ x),
+/* harmony export */   "getLowResolutionImageURL": () => (/* binding */ m),
+/* harmony export */   "getSrc": () => (/* binding */ S),
+/* harmony export */   "getSrcSet": () => (/* binding */ N),
+/* harmony export */   "withArtDirection": () => (/* binding */ I)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var camelcase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! camelcase */ "./node_modules/camelcase/index.js");
+/* harmony import */ var camelcase__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(camelcase__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+
+function n() {
+  return n = Object.assign || function (e) {
+    for (var t = 1; t < arguments.length; t++) {
+      var a = arguments[t];
+
+      for (var i in a) Object.prototype.hasOwnProperty.call(a, i) && (e[i] = a[i]);
+    }
+
+    return e;
+  }, n.apply(this, arguments);
+}
+
+function o(e, t) {
+  if (null == e) return {};
+  var a,
+      i,
+      r = {},
+      n = Object.keys(e);
+
+  for (i = 0; i < n.length; i++) t.indexOf(a = n[i]) >= 0 || (r[a] = e[a]);
+
+  return r;
+}
+
+var s = [.25, .5, 1, 2],
+    l = [750, 1080, 1366, 1920],
+    d = [320, 654, 768, 1024, 1366, 1600, 1920, 2048, 2560, 3440, 3840, 4096],
+    u = function (e) {
+  return console.warn(e);
+},
+    c = function (e, t) {
+  return e - t;
+},
+    h = function (e) {
+  return e.map(function (e) {
+    return e.src + " " + e.width + "w";
+  }).join(",\n");
+};
+
+function g(e) {
+  var t = e.lastIndexOf(".");
+
+  if (-1 !== t) {
+    var a = e.slice(t + 1);
+    if ("jpeg" === a) return "jpg";
+    if (3 === a.length || 4 === a.length) return a;
+  }
+}
+
+function p(e) {
+  var t = e.layout,
+      i = void 0 === t ? "constrained" : t,
+      r = e.width,
+      o = e.height,
+      s = e.sourceMetadata,
+      l = e.breakpoints,
+      d = e.aspectRatio,
+      u = e.formats,
+      c = void 0 === u ? ["auto", "webp"] : u;
+  return c = c.map(function (e) {
+    return e.toLowerCase();
+  }), i = camelcase__WEBPACK_IMPORTED_MODULE_1___default()(i), r && o ? n({}, e, {
+    formats: c,
+    layout: i,
+    aspectRatio: r / o
+  }) : (s.width && s.height && !d && (d = s.width / s.height), "fullWidth" === i ? (r = r || s.width || l[l.length - 1], o = o || Math.round(r / (d || 1.3333333333333333))) : (r || (r = o && d ? o * d : s.width ? s.width : o ? Math.round(o / 1.3333333333333333) : 800), d && !o ? o = Math.round(r / d) : d || (d = r / o)), n({}, e, {
+    width: r,
+    height: o,
+    aspectRatio: d,
+    layout: i,
+    formats: c
+  }));
+}
+
+function m(e, t) {
+  var a;
+  return void 0 === t && (t = 20), null == (a = (0, (e = p(e)).generateImageSource)(e.filename, t, Math.round(t / e.aspectRatio), e.sourceMetadata.format || "jpg", e.fit, e.options)) ? void 0 : a.src;
+}
+
+function f(e) {
+  var t,
+      a = (e = p(e)).pluginName,
+      i = e.sourceMetadata,
+      r = e.generateImageSource,
+      o = e.layout,
+      d = e.fit,
+      c = e.options,
+      m = e.width,
+      f = e.height,
+      b = e.filename,
+      E = e.reporter,
+      k = void 0 === E ? {
+    warn: u
+  } : E,
+      M = e.backgroundColor,
+      S = e.placeholderURL;
+  if (a || k.warn('[gatsby-plugin-image] "generateImageData" was not passed a plugin name'), "function" != typeof r) throw new Error("generateImageSource must be a function");
+  i && (i.width || i.height) ? i.format || (i.format = g(b)) : i = {
+    width: m,
+    height: f,
+    format: (null == (t = i) ? void 0 : t.format) || g(b) || "auto"
+  };
+  var N = new Set(e.formats);
+  (0 === N.size || N.has("auto") || N.has("")) && (N.delete("auto"), N.delete(""), N.add(i.format)), N.has("jpg") && N.has("png") && (k.warn("[" + a + "] Specifying both 'jpg' and 'png' formats is not supported. Using 'auto' instead"), N.delete("jpg" === i.format ? "png" : "jpg"));
+
+  var x = function (e) {
+    var t = e.filename,
+        a = e.layout,
+        i = void 0 === a ? "constrained" : a,
+        r = e.sourceMetadata,
+        o = e.reporter,
+        d = void 0 === o ? {
+      warn: u
+    } : o,
+        c = e.breakpoints,
+        h = void 0 === c ? l : c,
+        g = Object.entries({
+      width: e.width,
+      height: e.height
+    }).filter(function (e) {
+      var t = e[1];
+      return "number" == typeof t && t < 1;
+    });
+    if (g.length) throw new Error("Specified dimensions for images must be positive numbers (> 0). Problem dimensions you have are " + g.map(function (e) {
+      return e.join(": ");
+    }).join(", "));
+    return "fixed" === i ? function (e) {
+      var t = e.filename,
+          a = e.sourceMetadata,
+          i = e.width,
+          r = e.height,
+          n = e.fit,
+          o = void 0 === n ? "cover" : n,
+          l = e.outputPixelDensities,
+          d = e.reporter,
+          c = void 0 === d ? {
+        warn: u
+      } : d,
+          h = a.width / a.height,
+          g = v(void 0 === l ? s : l);
+
+      if (i && r) {
+        var p = y(a, {
+          width: i,
+          height: r,
+          fit: o
+        });
+        i = p.width, r = p.height, h = p.aspectRatio;
+      }
+
+      i ? r || (r = Math.round(i / h)) : i = r ? Math.round(r * h) : 800;
+      var m = i;
+
+      if (a.width < i || a.height < r) {
+        var f = a.width < i ? "width" : "height";
+        c.warn("\nThe requested " + f + ' "' + ("width" === f ? i : r) + 'px" for the image ' + t + " was larger than the actual image " + f + " of " + a[f] + "px. If possible, replace the current image with a larger one."), "width" === f ? (i = a.width, r = Math.round(i / h)) : i = (r = a.height) * h;
+      }
+
+      return {
+        sizes: g.filter(function (e) {
+          return e >= 1;
+        }).map(function (e) {
+          return Math.round(e * i);
+        }).filter(function (e) {
+          return e <= a.width;
+        }),
+        aspectRatio: h,
+        presentationWidth: m,
+        presentationHeight: Math.round(m / h),
+        unscaledWidth: i
+      };
+    }(e) : "constrained" === i ? w(e) : "fullWidth" === i ? w(n({
+      breakpoints: h
+    }, e)) : (d.warn("No valid layout was provided for the image at " + t + ". Valid image layouts are fixed, fullWidth, and constrained. Found " + i), {
+      sizes: [r.width],
+      presentationWidth: r.width,
+      presentationHeight: r.height,
+      aspectRatio: r.width / r.height,
+      unscaledWidth: r.width
+    });
+  }(n({}, e, {
+    sourceMetadata: i
+  })),
+      I = {
+    sources: []
+  },
+      W = e.sizes;
+
+  W || (W = function (e, t) {
+    switch (t) {
+      case "constrained":
+        return "(min-width: " + e + "px) " + e + "px, 100vw";
+
+      case "fixed":
+        return e + "px";
+
+      case "fullWidth":
+        return "100vw";
+
+      default:
+        return;
+    }
+  }(x.presentationWidth, o)), N.forEach(function (e) {
+    var t = x.sizes.map(function (t) {
+      var i = r(b, t, Math.round(t / x.aspectRatio), e, d, c);
+      if (null != i && i.width && i.height && i.src && i.format) return i;
+      k.warn("[" + a + "] The resolver for image " + b + " returned an invalid value.");
+    }).filter(Boolean);
+
+    if ("jpg" === e || "png" === e || "auto" === e) {
+      var i = t.find(function (e) {
+        return e.width === x.unscaledWidth;
+      }) || t[0];
+      i && (I.fallback = {
+        src: i.src,
+        srcSet: h(t),
+        sizes: W
+      });
+    } else {
+      var n;
+      null == (n = I.sources) || n.push({
+        srcSet: h(t),
+        sizes: W,
+        type: "image/" + e
+      });
+    }
+  });
+  var R = {
+    images: I,
+    layout: o,
+    backgroundColor: M
+  };
+
+  switch (S && (R.placeholder = {
+    fallback: S
+  }), o) {
+    case "fixed":
+      R.width = x.presentationWidth, R.height = x.presentationHeight;
+      break;
+
+    case "fullWidth":
+      R.width = 1, R.height = 1 / x.aspectRatio;
+      break;
+
+    case "constrained":
+      R.width = e.width || x.presentationWidth || 1, R.height = (R.width || 1) / x.aspectRatio;
+  }
+
+  return R;
+}
+
+var v = function (e) {
+  return Array.from(new Set([1].concat(e))).sort(c);
+};
+
+function w(e) {
+  var t,
+      a = e.sourceMetadata,
+      i = e.width,
+      r = e.height,
+      n = e.fit,
+      o = void 0 === n ? "cover" : n,
+      l = e.outputPixelDensities,
+      d = e.breakpoints,
+      u = e.layout,
+      h = a.width / a.height,
+      g = v(void 0 === l ? s : l);
+
+  if (i && r) {
+    var p = y(a, {
+      width: i,
+      height: r,
+      fit: o
+    });
+    i = p.width, r = p.height, h = p.aspectRatio;
+  }
+
+  i = i && Math.min(i, a.width), r = r && Math.min(r, a.height), i || r || (r = (i = Math.min(800, a.width)) / h), i || (i = r * h);
+  var m = i;
+  return (a.width < i || a.height < r) && (i = a.width, r = a.height), i = Math.round(i), (null == d ? void 0 : d.length) > 0 ? (t = d.filter(function (e) {
+    return e <= a.width;
+  })).length < d.length && !t.includes(a.width) && t.push(a.width) : t = (t = g.map(function (e) {
+    return Math.round(e * i);
+  })).filter(function (e) {
+    return e <= a.width;
+  }), "constrained" !== u || t.includes(i) || t.push(i), {
+    sizes: t = t.sort(c),
+    aspectRatio: h,
+    presentationWidth: m,
+    presentationHeight: Math.round(m / h),
+    unscaledWidth: i
+  };
+}
+
+function y(e, t) {
+  var a = e.width / e.height,
+      i = t.width,
+      r = t.height;
+
+  switch (t.fit) {
+    case "fill":
+      i = t.width ? t.width : e.width, r = t.height ? t.height : e.height;
+      break;
+
+    case "inside":
+      var n = t.width ? t.width : Number.MAX_SAFE_INTEGER,
+          o = t.height ? t.height : Number.MAX_SAFE_INTEGER;
+      i = Math.min(n, Math.round(o * a)), r = Math.min(o, Math.round(n / a));
+      break;
+
+    case "outside":
+      var s = t.width ? t.width : 0,
+          l = t.height ? t.height : 0;
+      i = Math.max(s, Math.round(l * a)), r = Math.max(l, Math.round(s / a));
+      break;
+
+    default:
+      t.width && !t.height && (i = t.width, r = Math.round(t.width / a)), t.height && !t.width && (i = Math.round(t.height * a), r = t.height);
+  }
+
+  return {
+    width: i,
+    height: r,
+    aspectRatio: i / r
+  };
+}
+
+var b = ["baseUrl", "urlBuilder", "sourceWidth", "sourceHeight", "pluginName", "formats", "breakpoints", "options"],
+    E = ["images", "placeholder"];
+
+function k() {
+  return "undefined" != typeof GATSBY___IMAGE && GATSBY___IMAGE;
+}
+
+var M = function (e) {
+  var t;
+  return function (e) {
+    var t, a;
+    return Boolean(null == e || null == (t = e.images) || null == (a = t.fallback) ? void 0 : a.src);
+  }(e) ? e : function (e) {
+    return Boolean(null == e ? void 0 : e.gatsbyImageData);
+  }(e) ? e.gatsbyImageData : function (e) {
+    return Boolean(null == e ? void 0 : e.gatsbyImage);
+  }(e) ? e.gatsbyImage : null == e || null == (t = e.childImageSharp) ? void 0 : t.gatsbyImageData;
+},
+    S = function (e) {
+  var t, a, i;
+  return null == (t = M(e)) || null == (a = t.images) || null == (i = a.fallback) ? void 0 : i.src;
+},
+    N = function (e) {
+  var t, a, i;
+  return null == (t = M(e)) || null == (a = t.images) || null == (i = a.fallback) ? void 0 : i.srcSet;
+};
+
+function x(e) {
+  var t,
+      a = e.baseUrl,
+      i = e.urlBuilder,
+      r = e.sourceWidth,
+      s = e.sourceHeight,
+      l = e.pluginName,
+      u = void 0 === l ? "getImageData" : l,
+      c = e.formats,
+      h = void 0 === c ? ["auto"] : c,
+      g = e.breakpoints,
+      p = e.options,
+      m = o(e, b);
+  return null != (t = g) && t.length || "fullWidth" !== m.layout && "FULL_WIDTH" !== m.layout || (g = d), f(n({}, m, {
+    pluginName: u,
+    generateImageSource: function (e, t, a, r) {
+      return {
+        width: t,
+        height: a,
+        format: r,
+        src: i({
+          baseUrl: e,
+          width: t,
+          height: a,
+          options: p,
+          format: r
+        })
+      };
+    },
+    filename: a,
+    formats: h,
+    breakpoints: g,
+    sourceMetadata: {
+      width: r,
+      height: s,
+      format: "auto"
+    }
+  }));
+}
+
+function I(e, t) {
+  var a,
+      i,
+      r,
+      s = e.images,
+      l = e.placeholder,
+      d = n({}, o(e, E), {
+    images: n({}, s, {
+      sources: []
+    }),
+    placeholder: l && n({}, l, {
+      sources: []
+    })
+  });
+  return t.forEach(function (t) {
+    var a,
+        i = t.media,
+        r = t.image;
+    i ? (r.layout !== e.layout && "development" === "development" && console.warn('[gatsby-plugin-image] Mismatched image layout: expected "' + e.layout + '" but received "' + r.layout + '". All art-directed images use the same layout as the default image'), (a = d.images.sources).push.apply(a, r.images.sources.map(function (e) {
+      return n({}, e, {
+        media: i
+      });
+    }).concat([{
+      media: i,
+      srcSet: r.images.fallback.srcSet
+    }])), d.placeholder && d.placeholder.sources.push({
+      media: i,
+      srcSet: r.placeholder.fallback
+    })) :  true && console.warn("[gatsby-plugin-image] All art-directed images passed to must have a value set for `media`. Skipping.");
+  }), (a = d.images.sources).push.apply(a, s.sources), null != l && l.sources && (null == (i = d.placeholder) || (r = i.sources).push.apply(r, l.sources)), d;
+}
+
+var W,
+    R = ["src", "srcSet", "loading", "alt", "shouldLoad"],
+    j = ["fallback", "sources", "shouldLoad"],
+    _ = function (t) {
+  var a = t.src,
+      i = t.srcSet,
+      r = t.loading,
+      s = t.alt,
+      l = void 0 === s ? "" : s,
+      d = t.shouldLoad,
+      u = o(t, R);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", n({}, u, {
+    decoding: "async",
+    loading: r,
+    src: d ? a : void 0,
+    "data-src": d ? void 0 : a,
+    srcSet: d ? i : void 0,
+    "data-srcset": d ? void 0 : i,
+    alt: l
+  }));
+},
+    A = function (t) {
+  var a = t.fallback,
+      i = t.sources,
+      r = void 0 === i ? [] : i,
+      s = t.shouldLoad,
+      l = void 0 === s || s,
+      d = o(t, j),
+      u = d.sizes || (null == a ? void 0 : a.sizes),
+      c = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_, n({}, d, a, {
+    sizes: u,
+    shouldLoad: l
+  }));
+  return r.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("picture", null, r.map(function (t) {
+    var a = t.media,
+        i = t.srcSet,
+        r = t.type;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("source", {
+      key: a + "-" + r + "-" + i,
+      type: r,
+      media: a,
+      srcSet: l ? i : void 0,
+      "data-srcset": l ? void 0 : i,
+      sizes: u
+    });
+  }), c) : c;
+};
+
+_.propTypes = {
+  src: prop_types__WEBPACK_IMPORTED_MODULE_2__.string.isRequired,
+  alt: prop_types__WEBPACK_IMPORTED_MODULE_2__.string.isRequired,
+  sizes: prop_types__WEBPACK_IMPORTED_MODULE_2__.string,
+  srcSet: prop_types__WEBPACK_IMPORTED_MODULE_2__.string,
+  shouldLoad: prop_types__WEBPACK_IMPORTED_MODULE_2__.bool
+}, A.displayName = "Picture", A.propTypes = {
+  alt: prop_types__WEBPACK_IMPORTED_MODULE_2__.string.isRequired,
+  shouldLoad: prop_types__WEBPACK_IMPORTED_MODULE_2__.bool,
+  fallback: prop_types__WEBPACK_IMPORTED_MODULE_2__.exact({
+    src: prop_types__WEBPACK_IMPORTED_MODULE_2__.string.isRequired,
+    srcSet: prop_types__WEBPACK_IMPORTED_MODULE_2__.string,
+    sizes: prop_types__WEBPACK_IMPORTED_MODULE_2__.string
+  }),
+  sources: prop_types__WEBPACK_IMPORTED_MODULE_2__.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_2__.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_2__.exact({
+    media: prop_types__WEBPACK_IMPORTED_MODULE_2__.string.isRequired,
+    type: prop_types__WEBPACK_IMPORTED_MODULE_2__.string,
+    sizes: prop_types__WEBPACK_IMPORTED_MODULE_2__.string,
+    srcSet: prop_types__WEBPACK_IMPORTED_MODULE_2__.string.isRequired
+  }), prop_types__WEBPACK_IMPORTED_MODULE_2__.exact({
+    media: prop_types__WEBPACK_IMPORTED_MODULE_2__.string,
+    type: prop_types__WEBPACK_IMPORTED_MODULE_2__.string.isRequired,
+    sizes: prop_types__WEBPACK_IMPORTED_MODULE_2__.string,
+    srcSet: prop_types__WEBPACK_IMPORTED_MODULE_2__.string.isRequired
+  })]))
+};
+
+var T = ["fallback"],
+    O = function (t) {
+  var a = t.fallback,
+      i = o(t, T);
+  return a ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(A, n({}, i, {
+    fallback: {
+      src: a
+    },
+    "aria-hidden": !0,
+    alt: ""
+  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", n({}, i));
+};
+
+O.displayName = "Placeholder", O.propTypes = {
+  fallback: prop_types__WEBPACK_IMPORTED_MODULE_2__.string,
+  sources: null == (W = A.propTypes) ? void 0 : W.sources,
+  alt: function (e, t, a) {
+    return e[t] ? new Error("Invalid prop `" + t + "` supplied to `" + a + "`. Validation failed.") : null;
+  }
+};
+
+var z = function (t) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(A, n({}, t)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("noscript", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(A, n({}, t, {
+    shouldLoad: !0
+  }))));
+};
+
+z.displayName = "MainImage", z.propTypes = A.propTypes;
+
+var L = ["children"],
+    q = function () {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("script", {
+    type: "module",
+    dangerouslySetInnerHTML: {
+      __html: 'const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}'
+    }
+  });
+},
+    C = function (t) {
+  var a = t.layout,
+      i = t.width,
+      r = t.height;
+  return "fullWidth" === a ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    "aria-hidden": !0,
+    style: {
+      paddingTop: r / i * 100 + "%"
+    }
+  }) : "constrained" === a ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    style: {
+      maxWidth: i,
+      display: "block"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    alt: "",
+    role: "presentation",
+    "aria-hidden": "true",
+    src: "data:image/svg+xml;charset=utf-8,%3Csvg height='" + r + "' width='" + i + "' xmlns='http://www.w3.org/2000/svg' version='1.1'%3E%3C/svg%3E",
+    style: {
+      maxWidth: "100%",
+      display: "block",
+      position: "static"
+    }
+  })) : null;
+},
+    D = function (a) {
+  var i = a.children,
+      r = o(a, L);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(C, n({}, r)), i, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(q, null));
+},
+    P = ["as", "className", "class", "style", "image", "loading", "imgClassName", "imgStyle", "backgroundColor", "objectFit", "objectPosition"],
+    H = ["style", "className"],
+    F = function (e) {
+  return e.replace(/\n/g, "");
+},
+    B = function (t) {
+  var a = t.as,
+      i = void 0 === a ? "div" : a,
+      r = t.className,
+      s = t.class,
+      l = t.style,
+      d = t.image,
+      u = t.loading,
+      c = void 0 === u ? "lazy" : u,
+      h = t.imgClassName,
+      g = t.imgStyle,
+      p = t.backgroundColor,
+      m = t.objectFit,
+      f = t.objectPosition,
+      v = o(t, P);
+  if (!d) return console.warn("[gatsby-plugin-image] Missing image prop"), null;
+  s && (r = s), g = n({
+    objectFit: m,
+    objectPosition: f,
+    backgroundColor: p
+  }, g);
+
+  var w = d.width,
+      y = d.height,
+      b = d.layout,
+      E = d.images,
+      M = d.placeholder,
+      S = d.backgroundColor,
+      N = function (e, t, a) {
+    var i = {},
+        r = "gatsby-image-wrapper";
+    return k() || (i.position = "relative", i.overflow = "hidden"), "fixed" === a ? (i.width = e, i.height = t) : "constrained" === a && (k() || (i.display = "inline-block", i.verticalAlign = "top"), r = "gatsby-image-wrapper gatsby-image-wrapper-constrained"), {
+      className: r,
+      "data-gatsby-image-wrapper": "",
+      style: i
+    };
+  }(w, y, b),
+      x = N.style,
+      I = N.className,
+      W = o(N, H),
+      R = {
+    fallback: void 0,
+    sources: []
+  };
+
+  return E.fallback && (R.fallback = n({}, E.fallback, {
+    srcSet: E.fallback.srcSet ? F(E.fallback.srcSet) : void 0
+  })), E.sources && (R.sources = E.sources.map(function (e) {
+    return n({}, e, {
+      srcSet: F(e.srcSet)
+    });
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(i, n({}, W, {
+    style: n({}, x, l, {
+      backgroundColor: p
+    }),
+    className: I + (r ? " " + r : "")
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(D, {
+    layout: b,
+    width: w,
+    height: y
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(O, n({}, function (e, t, a, i, r, o, s, l) {
+    var d = {};
+    o && (d.backgroundColor = o, "fixed" === a ? (d.width = i, d.height = r, d.backgroundColor = o, d.position = "relative") : ("constrained" === a || "fullWidth" === a) && (d.position = "absolute", d.top = 0, d.left = 0, d.bottom = 0, d.right = 0)), s && (d.objectFit = s), l && (d.objectPosition = l);
+    var u = n({}, e, {
+      "aria-hidden": !0,
+      "data-placeholder-image": "",
+      style: n({
+        opacity: 1,
+        transition: "opacity 500ms linear"
+      }, d)
+    });
+    return k() || (u.style = {
+      height: "100%",
+      left: 0,
+      position: "absolute",
+      top: 0,
+      width: "100%"
+    }), u;
+  }(M, 0, b, w, y, S, m, f))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(z, n({
+    "data-gatsby-image-ssr": "",
+    className: h
+  }, v, function (e, t, a, i, r) {
+    return void 0 === r && (r = {}), k() || (r = n({
+      height: "100%",
+      left: 0,
+      position: "absolute",
+      top: 0,
+      transform: "translateZ(0)",
+      transition: "opacity 250ms linear",
+      width: "100%",
+      willChange: "opacity"
+    }, r)), n({}, a, {
+      loading: i,
+      shouldLoad: e,
+      "data-main-image": "",
+      style: n({}, r, {
+        opacity: 0
+      })
+    });
+  }("eager" === c, 0, R, c, g)))));
+},
+    G = ["src", "__imageData", "__error", "width", "height", "aspectRatio", "tracedSVGOptions", "placeholder", "formats", "quality", "transformOptions", "jpgOptions", "pngOptions", "webpOptions", "avifOptions", "blurredOptions"],
+    V = function (t) {
+  return function (a) {
+    var i = a.src,
+        r = a.__imageData,
+        s = a.__error,
+        l = o(a, G);
+    return s && console.warn(s), r ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(t, n({
+      image: r
+    }, l)) : (console.warn("Image not loaded", i), s || "development" !== "development" || console.warn('Please ensure that "gatsby-plugin-image" is included in the plugins array in gatsby-config.js, and that your version of gatsby is at least 2.24.78'), null);
+  };
+}(B),
+    U = function (e, t) {
+  return "fullWidth" !== e.layout || "width" !== t && "height" !== t || !e[t] ? prop_types__WEBPACK_IMPORTED_MODULE_2___default().number.apply((prop_types__WEBPACK_IMPORTED_MODULE_2___default()), [e, t].concat([].slice.call(arguments, 2))) : new Error('"' + t + '" ' + e[t] + " may not be passed when layout is fullWidth.");
+},
+    X = new Set(["fixed", "fullWidth", "constrained"]),
+    Y = {
+  src: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string.isRequired),
+  alt: function (e, t, a) {
+    return e.alt || "" === e.alt ? prop_types__WEBPACK_IMPORTED_MODULE_2___default().string.apply((prop_types__WEBPACK_IMPORTED_MODULE_2___default()), [e, t, a].concat([].slice.call(arguments, 3))) : new Error('The "alt" prop is required in ' + a + '. If the image is purely presentational then pass an empty string: e.g. alt="". Learn more: https://a11y-style-guide.com/style-guide/section-media.html');
+  },
+  width: U,
+  height: U,
+  sizes: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string),
+  layout: function (e) {
+    if (void 0 !== e.layout && !X.has(e.layout)) return new Error("Invalid value " + e.layout + '" provided for prop "layout". Defaulting to "constrained". Valid values are "fixed", "fullWidth" or "constrained".');
+  }
+};
+
+V.displayName = "StaticImage", V.propTypes = Y;
+
+
+/***/ }),
+
+/***/ "./node_modules/gatsby-source-contentful/rich-text.js":
+/*!************************************************************!*\
+  !*** ./node_modules/gatsby-source-contentful/rich-text.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+exports.__esModule = true;
+exports.renderRichText = renderRichText;
+
+var _richTextReactRenderer = __webpack_require__(/*! @contentful/rich-text-react-renderer */ "./node_modules/@contentful/rich-text-react-renderer/dist/rich-text-react-renderer.es5.js");
+
+var _contentfulResolveResponse = _interopRequireDefault(__webpack_require__(/*! contentful-resolve-response */ "./node_modules/contentful-resolve-response/dist/esm/index.js")); // @ts-check
+
+
+function renderRichText({
+  raw,
+  references
+}, options = {}) {
+  const richText = JSON.parse(raw); // If no references are given, there is no need to resolve them
+
+  if (!references || !references.length) {
+    return (0, _richTextReactRenderer.documentToReactComponents)(richText, options);
+  } // Create dummy response so we can use official libraries for resolving the entries
+
+
+  const dummyResponse = {
+    items: [{
+      sys: {
+        type: `Entry`
+      },
+      richText
+    }],
+    includes: {
+      Entry: references.filter(({
+        __typename
+      }) => __typename !== `ContentfulAsset`).map(reference => {
+        return { ...reference,
+          sys: {
+            type: `Entry`,
+            id: reference.contentful_id
+          }
+        };
+      }),
+      Asset: references.filter(({
+        __typename
+      }) => __typename === `ContentfulAsset`).map(reference => {
+        return { ...reference,
+          sys: {
+            type: `Asset`,
+            id: reference.contentful_id
+          }
+        };
+      })
+    }
+  };
+  const resolved = (0, _contentfulResolveResponse.default)(dummyResponse, {
+    removeUnresolved: true
+  });
+  return (0, _richTextReactRenderer.documentToReactComponents)(resolved[0].richText, options);
+}
+
+/***/ }),
+
 /***/ "./src/components/footer.js":
 /*!**********************************!*\
   !*** ./src/components/footer.js ***!
@@ -3093,17 +5011,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/layout */ "./src/components/layout.js");
+/* harmony import */ var _contentful_rich_text_react_renderer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @contentful/rich-text-react-renderer */ "./node_modules/@contentful/rich-text-react-renderer/dist/rich-text-react-renderer.es5.js");
+/* harmony import */ var gatsby_source_contentful_rich_text__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gatsby-source-contentful/rich-text */ "./node_modules/gatsby-source-contentful/rich-text.js");
+/* harmony import */ var gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! gatsby-plugin-image */ "./node_modules/gatsby-plugin-image/dist/gatsby-image.module.js");
+/* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/layout */ "./src/components/layout.js");
 
 
-const query = "3210822286";
+
+
+
+const query = "3137792806";
 
 const Blog = props => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, props.data.markdownRemark.frontmatter.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.data.markdownRemark.frontmatter.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    dangerouslySetInnerHTML: {
-      __html: props.data.markdownRemark.html
+  const options = {
+    renderNode: {
+      "embedded-asset-block": node => {
+        const {
+          gatsbyImageData,
+          description
+        } = node.data.target;
+
+        if (!gatsbyImageData) {
+          // asset is not an image
+          return null;
+        }
+
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_4__.GatsbyImage, {
+          image: (0,gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_4__.getImage)(gatsbyImageData),
+          alt: description
+        });
+      }
     }
-  }));
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_layout__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, props.data.contentfulMaksymKaczorowskiDeveloper.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.data.contentfulMaksymKaczorowskiDeveloper.publishedDate), (0,_contentful_rich_text_react_renderer__WEBPACK_IMPORTED_MODULE_1__.documentToReactComponents)(JSON.parse(props.data.contentfulMaksymKaczorowskiDeveloper.body.raw)) && (0,gatsby_source_contentful_rich_text__WEBPACK_IMPORTED_MODULE_2__.renderRichText)(props.data.contentfulMaksymKaczorowskiDeveloper.body, options));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Blog);

@@ -6127,7 +6127,7 @@
     "@parcel/transformer-raw" "^2.3.2"
     "@parcel/transformer-react-refresh-wrap" "^2.3.2"
 
-"gatsby-plugin-image@^2.0.0-next":
+"gatsby-plugin-image@^2.0.0-next", "gatsby-plugin-image@^2.14.1":
   "integrity" "sha512-9ez7/MqjZLwvFqY37miFO3IAcqF3rkhUMyrwct+JMk2c1AcXgGyG1acgKGkJU6maiQoIqSKtyzjoQD8+o3f0Hg=="
   "resolved" "https://registry.npmjs.org/gatsby-plugin-image/-/gatsby-plugin-image-2.14.1.tgz"
   "version" "2.14.1"
