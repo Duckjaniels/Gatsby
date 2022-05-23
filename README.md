@@ -4,6 +4,48 @@
   </a>
 </p>
 
+## Table of Contents
+
+* [General Info](#general-information)
+* [Technologies Used](#technologies-used)
+* [Setup](#setup)
+* [Project Status](#project-status)
+* [Room for Improvement](#room-for-improvement)
+* [Contact](#contact)
+
+## General Information
+
+- Personal site with personal informations, contact and projects sections.
+- Main goal of project is to create personal portfolio website by learning and practicing Gatsby framework with
+  connection of Contentful CMS.
+- For now the structure of the site is build, now it's time for filling it with content and styling all components.
+
+## Technologies Used
+
+- HTML
+- SCSS
+-
+
+## Setup
+
+- download or clone repository / `git clone repo_address`
+- install dependencies / `npm install`
+- start app by 'gulp'
+
+## Project Status
+
+Project is: no longer being worked on. Assumed learning task completed.
+
+[//]: # (Assumed learning task completed.)
+
+## Room for Improvement
+
+- Contact section could be useable with validation and contact form.
+
+## Contact
+
+Created by [_Duckjaniels_](https://www.linkedin.com/in/maksym-kaczorowski-008b3a154/) - feel free to contact me!#
+
 IN PROGRESS!
 
 My personal portfolio website made in React with use of Gatsby and Cententful CMS
